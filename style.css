@@ -1,12 +1,13 @@
-.box {
-    border: 1px solid red;
-    box-sizing: border-box;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-}
 
 .container {
-    min-width: 500px;
-    min-height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 0px;
+    border: 3px solid black;
+    margin-bottom: 0px;
+    width: 350px;
+    height: 350px;
+    color: white;
+    border-radius: 5px;
 }
