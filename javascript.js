@@ -1,4 +1,5 @@
 const container = document.querySelector('.container')
+let row = document.createElement('div')
 
 function test (num) {
     const widthAndHeight = 350; //Width and Height of grid Container
@@ -6,65 +7,70 @@ function test (num) {
 
 
     for (let i = 0 ; i < num ; i++) {
-        let row = document.createElement('div')
+         row = document.createElement('div')
         for (let j = 0 ; j < num ;j++) {
             let squares = document.createElement('div')
             squares.setAttribute("class","box")
             row.appendChild(squares)
-            container.appendChild(row)
             squares.style.height=pixelSquare
             squares.style.width=pixelSquare
-            squares.style.margin = '0px';
-            squares.style.border ='1px solid rgba(179,179,179,1)';
-            squares.style.boxSizing = 'border-box';
+            squares.style.margin = '0px'
+            squares.style.border ='1px solid rgba(179,179,179,1)'
+            squares.style.boxSizing = 'border-box'
 
 
             // mouse enter event listener
-            // squares.addEventListener("mouseenter",function() {
-            //     squares.style.backgroundColor="red"
-            // })
-            // squares.addEventListener("mouseleave",function(e) {
+            squares.addEventListener("mouseenter",function() {
+                squares.style.backgroundColor="red"
+            })
+            // squares.addEventListener("mouseleave",function() {
             //     squares.style.backgroundColor = 'white'
             // })
         }
-        
-        
+        container.appendChild(row)
+
     }
 }
-test(4)
 
 
-// const btn = document.querySelector('#refresh')
-// btn.addEventListener('click',   )
+const btn = document.querySelector('#refresh')
+btn.addEventListener('click', userinput)
 
+// test(16)
 
-// // function userinput() {
-// //     // let x = prompt("enter grid size")
-// //     let x = 5
-// //     console.log(x)
-// //     test(x)
-// // }
-
-// // function reload() {
-// //     test(16)
-
-// // }
-
-
-function createGridSquares(pixel) {
-    const widthAndHeight = 350; //Width and Height of grid Container
-    const pixelSquare = (widthAndHeight/pixel)+'px';
-    const totalPixels = pixel*pixel;
-    for (let i = 1; i <= totalPixels; i++) {
-        let innerD = document.createElement('div');
-        innerD.classList.add('innerDivs');
-        container.appendChild(innerD);
-        innerD.style.backgroundColor = '#cbcfc2';
-        innerD.style.height = pixelSquare;
-        innerD.style.width = pixelSquare;
-        innerD.style.margin = '0px';
-        innerD.style.border ='1px solid rgba(179,179,179,1)';
-        innerD.style.boxSizing = 'border-box';
-    }
+function userinput() {
+    let x = prompt("enter grid size")
+    console.log(x)
+    test(x)
 }
-// createGridSquares(16)
+
+const deleteBoxes = (num) => {
+    const boxes = document.querySelectorAll(".box")
+    boxes.forEach((div) => {
+      row.removeChild(div)
+    });
+  };
+
+
+const resetBackgrounds = () => {
+const boxes = document.querySelectorAll(".box")
+boxes.forEach((div) => {
+    div.removeAttribute("style")
+})
+}
+
+ const resetGrid = () => {
+    deleteBoxes();
+    num = 16;
+    test(num);
+};
+
+      const BTN_RESET_GRID = document.getElementById("removecolor");6
+
+
+    //   BTN_RESET_GRID.addEventListener("click", () => resetGrid());
+    BTN_RESET_GRID.addEventListener("click", function(){
+        window.location.reload()
+    })
+
+userinput()
